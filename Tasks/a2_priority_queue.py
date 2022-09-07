@@ -17,6 +17,7 @@ class PriorityQueue:
         :param elem: element to be added
         :return: Nothing
         """
+        self.data[priority].append(elem)
         return None
 
     def dequeue(self) -> Any:

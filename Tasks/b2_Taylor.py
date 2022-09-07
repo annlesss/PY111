@@ -1,7 +1,9 @@
 """
 Taylor series
 """
+import math
 from typing import Union
+COUNT_SEQ = 20
 
 
 def ex(x: Union[int, float]) -> float:
@@ -12,7 +14,13 @@ def ex(x: Union[int, float]) -> float:
     :return: e^x value
     """
     print(x)
-    return 0
+    gen = range(1, COUNT_SEQ)
+    val = 1
+
+    for idx in gen:
+        val += x ** idx / math.factorial(idx)
+
+    return val
 
 
 def sinx(x: Union[int, float]) -> float:
@@ -23,4 +31,10 @@ def sinx(x: Union[int, float]) -> float:
     :return: sin(x) value
     """
     print(x)
-    return 0
+    gen = (range(1, COUNT_SEQ))
+    val = x
+    for idx in gen:
+        sign = (-1) ** idx
+        val += sign * x ** (2 * idx + 1) / math.factorial(2 * idx + 1)
+
+    return val
