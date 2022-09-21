@@ -1,6 +1,7 @@
 from typing import Hashable, List
 import networkx as nx
-
+from Tasks.a0_my_stack import Stack
+from queue import LifoQueue as Stack
 
 def dfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
     """
@@ -11,4 +12,22 @@ def dfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
     :return: list of nodes in the visited order
     """
     print(g, start_node)
-    return list(g.nodes)
+
+    s = Stack()
+    node = start_node
+    path = []
+    # пробегаемся по глубине
+    while True:
+        if node not in path:
+            path.append(node)
+            for neig in g.neighbors(node):
+                if neig not in path and neig not in q.data:
+                    s.push(neig)
+        node = s.pop()
+        if node is None:
+            return path
+
+if __name__ == "__main__":
+    s = Stack()
+    print(1)
+
