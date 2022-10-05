@@ -21,7 +21,7 @@ def bfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
             path.append(node)
             for neig in g.neighbors(node):
                 if neig not in path and neig not in q.data:
-                    g.enqueue(neig)
+                    q.enqueue(neig)
         node = q.dequeue()
         if node is None:
             return path

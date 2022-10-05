@@ -17,15 +17,15 @@ def dfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
     node = start_node
     path = []
     # пробегаемся по глубине
-    while True:
+    while s.data:
         if node not in path:
             path.append(node)
             for neig in g.neighbors(node):
-                if neig not in path and neig not in q.data:
+                if neig not in path and neig not in s.data:
                     s.push(neig)
         node = s.pop()
-        if node is None:
-            return path
+        # if node is None:
+        #     return path
 
 if __name__ == "__main__":
     s = Stack()
